@@ -20,17 +20,21 @@ If no arguments are specified other than `--length`, the password will automatic
 
 ### Examples
 
+Generate a 16-character password with lowercase letters, uppercase letters, digits, and special characters:
+
+```python pass_gen.py```
+
 Generate a 12-character password with lowercase letters, uppercase letters, digits, and special characters:
 
 ```python pass_gen.py --length 12```
 
-Generate a 16-character password with lowercase letters only:
+Generate a 20-character password with lowercase letters only:
 
-```python pass_gen.py --length 16 --no_upper --no_digits --no_special```
+```python pass_gen.py --length 20 --no_upper --no_digits --no_special```
 
-Generate a 20-character password with lowercase letters and digits:
+Generate a 32-character password with lowercase letters and digits:
 
-```python pass_gen.py --length 20 --no_special```
+```python pass_gen.py --length 32 --no_special```
 
 ## License
 
