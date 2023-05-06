@@ -1,30 +1,36 @@
-#password generator tool
+#password generator tool that can be run from the command line and accept arguments
 
 import random
 import string
+import argparse
 
-def password_generator(length, include_uppercase=True, include_digits=True, include_special_characters=True):
-    #define the characters to be used in the password
-    characters = string.ascii_lowercase
-    if include_uppercase:
-        characters += string.ascii_uppercase
-    if include_digits:
-        characters += string.digits
-    if include_special_characters:
-        characters += string.punctuation
+def password_generator():
+    parser = argparse.ArgumentParser(description='Password Generator')
+    parser.add_argument('--length', type=int, help='length of password', default=8)
+    parser.add_argument('--no_upper', action='store_true', help='exclude uppercase letters')
+    parser.add_argument('--no_digits', action='store_true', help='exclude digits')
+    parser.add_argument('--no_special', action='store_true', help='exclude special characters')
+    args = parser.parse_args()
 
-    #generate the password
-    password = ''.join(random.choice(characters) for i in range(length))
-    return password
+    length = args.length
+    upper = not args.no_upper
+    digits = not args.no_digits
+    special = not args.no_special
 
-def main():
-    #get the password length
-    length = int(input("Enter the password length: "))
+    # If no arguments are specified other than length, include all character types
+    if not (args.no_upper or args.no_digits or args.no_special):
+        upper = digits = special = True
 
-    #get the password
-    password = password_generator(length)
+    char_sets = [string.ascii_lowercase]
+    if upper:
+        char_sets.append(string.ascii_uppercase)
+    if digits:
+        char_sets.append(string.digits)
+    if special:
+        char_sets.append(string.punctuation)
 
-    #print the password
+    password = ''.join(random.choice(random.choice(char_sets)) for i in range(length))
     print(password)
 
-main()
+password_generator()
+
