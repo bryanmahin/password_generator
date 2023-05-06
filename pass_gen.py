@@ -6,7 +6,7 @@ import argparse
 
 def password_generator():
     parser = argparse.ArgumentParser(description='Password Generator')
-    parser.add_argument('--length', type=int, help='length of password', default=8)
+    parser.add_argument('--length', type=int, help='length of password', default=16)
     parser.add_argument('--no_upper', action='store_true', help='exclude uppercase letters')
     parser.add_argument('--no_digits', action='store_true', help='exclude digits')
     parser.add_argument('--no_special', action='store_true', help='exclude special characters')
